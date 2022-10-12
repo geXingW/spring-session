@@ -1,0 +1,25 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: shop-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: passport_route
+          uri: http://localhost:8091
+          predicates:
+            - Host=passport.shop.com
+
+        - id: member_route
+          uri: http://localhost:8093
+          predicates:
+            - Host=member.shop.com
+
+        - id: port_route
+          uri: http://localhost:8092
+          predicates:
+            - Host=www.shop.com
+
